@@ -64,10 +64,9 @@ const paying = document.getElementById('payment');
 const credit = document.getElementById('credit-card');
 const paypal = document.getElementById('paypal');
 const coin = document.getElementById('bitcoin');
-paypal.style.display = 'none';
-coin.style.display = 'none';
 paying.children[1].setAttribute('selected', 'selected');
-
+paypal.hidden = 'true';
+coin.hidden = 'true';
 // event listener for payment types, displaying only the one selected, with credit as the default
 
 paying.addEventListener('change', (e) => {
@@ -92,10 +91,21 @@ const zip = document.getElementById('zip')
 const cardVerify = document.getElementById('cvv');
 const form = document.querySelector('form');
 
-const nameValidator = () => {
-  let nameValue = names.value;
-  const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue)
-  return nameValid
+//const nameValidator = () => {
+//  let nameValue = names.value;
+//  const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue)
+//  return nameValid
+//};
+
+const nameValidator = (name) => {
+  const element = names.parentNode
+  if (!/\S/.test(name)) {
+    invalidStyle(element)
+    return false
+  } else {
+    validStyle(element)
+    return true
+  }
 };
 
 const emailValidator = () => {
@@ -105,7 +115,7 @@ const emailValidator = () => {
 };
 
 const ccVerify = () => {
-  let ccValue = cardVerify.value;
+  let ccValue = creditNumber.value;
   const ccValid = /^\d{13,16}$/.test(ccValue);
   return ccValid;
 };
