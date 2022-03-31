@@ -7,7 +7,7 @@ const design = document.getElementById('design');
 const colors = document.getElementById('color');
 
 
-// select 'other' input and set it's native display to none
+// select 'other' input and set native display to none
 
 const otherRole = document.getElementById('other-job-role');
 otherRole.style.display = 'none';
@@ -91,26 +91,16 @@ const zip = document.getElementById('zip')
 const cardVerify = document.getElementById('cvv');
 const form = document.querySelector('form');
 
-//const nameValidator = () => {
-//  let nameValue = names.value;
-//  const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue)
-//  return nameValid
-//};
-
-const nameValidator = (name) => {
-  const element = names.parentNode
-  if (!/\S/.test(name)) {
-    invalidStyle(element)
-    return false
-  } else {
-    validStyle(element)
-    return true
-  }
+const nameValidator = () => {
+  let nameValue = names.value;
+  const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue)
+  return nameValid
 };
 
+// regex for email validation taken from - https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript
 const emailValidator = () => {
   let emailValue = email.value;
-  const emailValid = /^[^@]+@[^@.]+\.com+$/i.test(emailValue)
+  const emailValid =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(emailValue)
   return emailValid;
 };
 
